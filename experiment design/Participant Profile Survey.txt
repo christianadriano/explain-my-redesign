@@ -1,0 +1,19 @@
+Participant Profile Survey
+
+1- What is your college education background?
+
+2- How many years have you being writing code?
+
+3- Do you have public projects on GitHub, GitLab, BitBucket, or similars?  Are these projects representative of your programming experience?
+
+4- If positive, could you give us your username so we can look at the type of projects that you developed there?
+
+5- Have you ever design a software system by applying design patterns?
+
+6- If yes, how many?
+
+7- How many of these systems were deployed in production?
+
+8- Have you ever needed to refactor a software system that you designed?
+
+9- Did any of the refactoring involved applying a new design pattern?
