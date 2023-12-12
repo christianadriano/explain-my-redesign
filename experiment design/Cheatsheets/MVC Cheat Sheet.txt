@@ -1,0 +1,66 @@
+MVC Cheat Sheet
+
+Certainly! The Model-View-Controller (MVC) design pattern is a software architectural pattern widely used for designing and organizing code in applications with user interfaces. It aims to separate the concerns of managing data (Model), user interface presentation (View), and user input and application logic (Controller). This separation enhances modularity, maintainability, and flexibility in software development.
+
+Here's a brief description of each component in the MVC pattern:
+
+1. **Model:**
+   - **Responsibility:** Represents the application's data and business logic. It is responsible for managing the state of the application, processing data, and enforcing business rules.
+   - **Characteristics:**
+     - Models are independent of the user interface or how data is presented and accepted.
+     - They notify registered observers (such as views) about changes in the data.
+
+2. **View:**
+   - **Responsibility:** Presents the data to the user and handles the user interface. Views are responsible for displaying information and receiving user input.
+   - **Characteristics:**
+     - Views observe the model and update their presentation when the model changes.
+     - They send user input to the controller for further processing.
+
+3. **Controller:**
+   - **Responsibility:** Manages user input, processes it, and updates the model and view accordingly. Controllers act as intermediaries between the model and view.
+   - **Characteristics:**
+     - Controllers interpret user input and determine the appropriate actions to take.
+     - They update the model and, in turn, trigger updates in the views.
+
+**Key Principles:**
+- **Separation of Concerns:** The main goal of MVC is to separate the concerns of data management, user interface presentation, and user input processing, making the codebase more modular and maintainable.
+- **Modifiability:** Changes to one component (e.g., the model) don't necessitate changes to others (e.g., views or controllers). This enhances the adaptability and ease of modification in response to changing requirements.
+- **Reusability:** Because of the separation of concerns, components (models, views, or controllers) can be reused independently in other parts of the application or even in different applications.
+
+**Typical Flow:**
+1. **User interacts with the View:** User actions, such as clicking a button or entering data, are captured by the view.
+2. **Controller processes user input:** The controller interprets the user's actions and decides how to handle them, making changes to the model if necessary.
+3. **Model is updated:** The model is updated by the controller to reflect any changes resulting from user input.
+4. **View is updated:** The view observes the model and updates its presentation based on the changes.
+5. **User sees updated interface:** The updated view reflects the changes made by the controller in response to user input.
+
+MVC is a powerful pattern that has been widely adopted in various software development contexts, including web development frameworks, desktop applications, and mobile applications, for its ability to enhance code organization and maintainability.
+
++------------------------+      +------------------------+      +------------------------+
+|        MainController  |      |         Model          |      |         View           |
++------------------------+      +------------------------+      +------------------------+
+| + model: Model         |<>----|                        |      |                        |
+| + view: View           |      |                        |      |                        |
++------------------------+      +------------------------+      +------------------------+
+            |                             ^                             |
+            |                             |                             |
+            |                             |                             |
+            v                             |                             v
++------------------------+      +------------------------+      +------------------------+
+|   SomeController       |      |      ConcreteModel     |      |    ConcreteView        |
++------------------------+      +------------------------+      +------------------------+
+| + model: Model         |      | - data: DataType       |      | - display(): void      |
+| + view: View           |      +------------------------+      +------------------------+
++------------------------+
+
+In this simplified UML diagram:
+
+MainController is the main controller that manages instances of the other controllers and holds references to the main model (Model) and the main view (View).
+
+Model represents the application's data and business logic. It is typically an abstract class or interface, and ConcreteModel is a concrete implementation.
+
+View represents the user interface presentation. It is typically an abstract class or interface, and ConcreteView is a concrete implementation.
+
+SomeController is a controller associated with the Model and View. It manages the interaction between the model and view.
+
+Note that this is a conceptual representation, and in a real-world scenario, you might have more complexity, such as multiple views for each model, services for data retrieval, and interactions between different controllers. Additionally, the relationships between components (e.g., aggregation or composition) can be adjusted based on the specific needs of your application.

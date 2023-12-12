@@ -1,0 +1,78 @@
+Hierarchical Model-View-Controller Cheat Sheet
+
+The Hierarchical Model-View-Controller (HMVC) design pattern is an extension of the traditional Model-View-Controller (MVC) pattern. HMVC introduces a hierarchical organization of MVC trios, allowing for a modular and organized structure in applications. It provides a way to organize code in a manner that reflects the natural hierarchy and relationships between different components.
+
+Here's a breakdown of the key components and characteristics of the HMVC design pattern:
+
+1. **Hierarchical Organization:**
+   - **Description:** HMVC introduces a hierarchy of MVC trios, meaning that each module or component in the application has its own Model-View-Controller structure.
+   - **Benefits:**
+     - Improves modularity and code organization by breaking down the application into smaller, manageable modules.
+     - Encourages a more intuitive and structured organization that mirrors the actual relationships between components.
+
+2. **Independent MVC Trios:**
+   - **Description:** Each module or component has its own Model-View-Controller trio, making it independent of other modules. Each trio is responsible for its specific functionality.
+   - **Benefits:**
+     - Supports independent development and testing of modules, making it easier to reason about and maintain each part of the system.
+     - Promotes code reusability as modules can be more easily extracted and reused in other parts of the application or in different projects.
+
+3. **Communication Between Modules:**
+   - **Description:** While each module operates independently, there is still a need for communication between modules. This communication is typically done through well-defined interfaces or APIs.
+   - **Benefits:**
+     - Defines clear boundaries and contracts between modules, making it easier for different teams to work on different parts of the application simultaneously.
+     - Encourages a decoupled architecture, reducing dependencies between modules.
+
+4. **Scalability:**
+   - **Description:** HMVC allows for scalability by enabling the independent scaling of different modules. If one module requires more resources or needs to handle increased traffic, it can be scaled independently without affecting other modules.
+   - **Benefits:**
+     - Supports the growth of specific features or functionalities without impacting the entire application.
+
+5. **Flexibility in Technology Choices:**
+   - **Description:** Each module can have its own technology stack, allowing for flexibility in choosing the most suitable tools and frameworks for a specific task.
+   - **Benefits:**
+     - Enables teams to choose the best technology for their specific module, promoting diversity in technology usage within the overall application.
+
+6. **User Interface Composition:**
+   - **Description:** In web development, HMVC is often used to compose complex user interfaces from smaller, reusable components. Each component may have its own MVC structure.
+   - **Benefits:**
+     - Supports the creation of complex user interfaces by combining and reusing smaller, well-defined components.
+     - Enhances maintainability and readability by encapsulating UI logic within individual modules.
+
+In summary, HMVC is a design pattern that enhances the benefits of the traditional MVC pattern by introducing a hierarchical organization, promoting modularity, independence, and scalability in large and complex applications. It's particularly well-suited for applications with multiple features, teams, or modules that can be developed and maintained independently.
+
+
++------------------------+      +--------------------------+      +------------------------+
+|        MainController  |      |      ProductCatalog      |      |       ShoppingCart     |
++------------------------+      +--------------------------+      +------------------------+
+| + productCatalog: PC   |<>----| - products: List<Product>|      | - items: List<Product> |
+| + shoppingCart: SC     |      |                          |      |                        |
+| + user: User           |      +--------------------------+      +------------------------+
++------------------------+                 |                             |
+            |                              |                             |
+            v                              v                             v
++------------------------+      +------------------------+      +------------------------+
+|     ProductController  |      |   CatalogView          |      |   CartView             |
++------------------------+      +------------------------+      +------------------------+
+| + model: Product       |      |                        |      |                        |
+| + view: CatalogView    |      |                        |      |                        |
++------------------------+      +------------------------+      +------------------------+
+            |                                                      |
+            v                                                      v
++------------------------+      +-------------------------+      +------------------------+
+|   ShoppingCartController|     |   CatalogController     |      |   CartController       |
++------------------------+      +-------------------------+      +------------------------+
+| + model: ShoppingCart   |     | + model: ProductCatalog |      | + model: ShoppingCart  |
+| + view: CartView        |     | + view: CatalogView     |      | + view: CartView       |
++------------------------+      +-------------------------+      +------------------------+
+
+In this simplified UML diagram:
+
+MainController is the main controller that manages instances of the other controllers and holds references to the main models (ProductCatalog, ShoppingCart) and the user (User).
+
+ProductCatalog and ShoppingCart are models representing the product catalog and the user's shopping cart, respectively.
+
+CatalogView and CartView are views responsible for displaying the product catalog and the shopping cart.
+
+ProductController, CatalogController, and CartController are controllers associated with the Product, ProductCatalog, and ShoppingCart models, respectively. Each controller manages the interaction between its associated model and view.
+
+Note that this is a conceptual representation, and the actual implementation may vary based on the specific requirements and technologies used in your application. Additionally, in a real-world scenario, you might have more complexity, such as multiple views for each model, services for data retrieval, and interactions between different controllers.
