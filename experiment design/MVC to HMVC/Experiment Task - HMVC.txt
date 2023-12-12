@@ -1,0 +1,16 @@
+
+Experiment Task
+
+Given your new refactored code, now you need to refactor it to satisfy the following requirement.
+
+A new functional requirement asks for prevent that items in the shopping cart to be sold out before the user completes the transaction. In order that items are not kept reserved for too long, there should be a time-out (a minimum period of time) until  which the item in the shopping cart is protected from being sold out.
+
+The senior architect in your team suggested that we should redesign the system using the hierarchical MVC. 
+
+This is a cheat-sheet of the HMVC pattern 
+
+List the modifications that you would do the application and justify them.
+
+What are the benefits of your refactoring for this code?
+
+What are the new constraints that your refactoring imposes to the maintenance of the code?
