@@ -1,0 +1,21 @@
+Task
+Participant
+Novice Software Programmer with basic knwoledge of the MVC pattern
+
+-------------------------------------
+
+Pre-Test Task
+
+Goal: Refactor a legacy application to be compliant with the MVC design pattern
+Legacy Application: Given a Java source code of an e-commerce application that does not use MVC and has at least the following classes, ShoppingCart,  ProductCatalog, Order, and User. 
+
+This is a cheat-sheet of the MVC pattern 
+
+List the modifications that you would do the application and justify them.
+
+What are the benefits of your refactoring for this code?
+
+What are the new constraints that your refactoring imposes to the maintenance of the code?
+
+------------------------------------
+
