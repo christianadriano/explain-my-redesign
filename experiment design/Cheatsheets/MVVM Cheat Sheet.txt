@@ -1,0 +1,78 @@
+# MVVM Cheat Sheet
+
+The Model-View-ViewModel (MVVM) design pattern is a modern software architectural pattern commonly employed in applications with graphical user interfaces. 
+MVVM aims to enhance code organization and maintainability by segregating concerns related to data management (Model), user interface presentation (View), and user interactions (ViewModel).
+
+## 1. Model:
+   - **Responsibility:**
+     - Represents the application's data and business logic.
+     - Manages the state of the application and enforces business rules.
+   - **Characteristics:**
+     - Independent of the user interface.
+     - Notifies observers (ViewModels) about changes in the data.
+
+## 2. View:
+   - **Responsibility:**
+     - Presents the user interface to the user.
+     - Binds to ViewModel properties to display data.
+     - Captures user input and forwards it to the ViewModel.
+   - **Characteristics:**
+     - Observes ViewModel for changes and updates the UI accordingly.
+     - Limited or no application logic.
+
+## 3. ViewModel:
+   - **Responsibility:**
+     - Acts as an intermediary between the Model and the View.
+     - Exposes data and commands to the View.
+     - Contains presentation logic and manages user interactions.
+   - **Characteristics:**
+     - Observes the Model for changes and updates properties exposed to the View.
+     - Commands handle user input and invoke actions in the Model.
+
+## Key Principles:
+- **Data Binding:** MVVM relies on data binding to keep the UI and ViewModel in sync, reducing boilerplate code for updating the interface.
+- **Separation of Concerns:** Similar to MVC, MVVM separates concerns for better code organization and maintainability.
+- **Testability:** ViewModel logic can be easily unit-tested, as it does not rely on UI components.
+
+## Typical Flow:
+1. **User interacts with the View:**
+   - User actions, such as button clicks, trigger events in the View.
+2. **View updates ViewModel:**
+   - View forwards user input to the ViewModel.
+   - ViewModel updates its properties based on user input or other events.
+3. **ViewModel updates Model:**
+   - ViewModel translates user actions into operations on the Model.
+   - Model is updated accordingly.
+4. **Model notifies ViewModel:**
+   - Model notifies ViewModel of changes in data.
+5. **ViewModel updates View:**
+   - ViewModel updates the View through data binding.
+   - View reflects changes in the UI.
+
+## MVVM Components:
++------------------------+      +------------------------+      +------------------------+
+|       MainViewModel    |      |         Model          |      |         View           |
++------------------------+      +------------------------+      +------------------------+
+| + model: Model         |<>----|                        |      |                        |
+| + view: View           |      |                        |      |                        |
++------------------------+      +------------------------+      +------------------------+
+            |                             ^                             |
+            |                             |                             |
+            |                             |                             |
+            v                             |                             v
++------------------------+      +------------------------+      +------------------------+
+|   SomeViewModel        |      |   ConcreteModel        |      |    ConcreteView        |
++------------------------+      +------------------------+      +------------------------+
+| + model: Model         |      | - data: DataType       |      | - display(): void      |
+| + view: View           |      +------------------------+      +------------------------+
++------------------------+
+
+**In this simplified UML diagram:**
+
+**MainViewModel** is the main view model that manages instances of other view models and holds references to the main model (Model) and the main view (View).
+
+**Model** represents the application's data and business logic. It is typically an abstract class or interface, and **ConcreteModel** is a concrete implementation.
+
+**View** represents the user interface presentation. It is typically an abstract class or interface, and **ConcreteView** is a concrete implementation.
+
+**SomeViewModel** is a view model associated with the Model and View. It manages the interaction between the model and view.
